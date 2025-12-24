@@ -3,6 +3,7 @@ package com.tyleryin.medialibrary.controller;
 import com.tyleryin.medialibrary.DTO.CreateItemRequest;
 import com.tyleryin.medialibrary.DTO.ItemResponse;
 import com.tyleryin.medialibrary.service.ItemService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,7 +30,7 @@ public class ItemsController {
     }
 
     @PostMapping
-    public ResponseEntity<ItemResponse> create(@RequestBody CreateItemRequest req) {
+    public ResponseEntity<ItemResponse> create(@Valid @RequestBody CreateItemRequest req) {
         ItemResponse created =  itemService.createItem(req);
         return ResponseEntity
                 .created(URI.create("/items/" + created.getId()))

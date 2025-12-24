@@ -1,5 +1,7 @@
 package com.tyleryin.medialibrary.DTO;
 
+import com.tyleryin.medialibrary.in_memory_domain.Item;
+
 import java.util.UUID;
 
 /**
@@ -9,7 +11,7 @@ import java.util.UUID;
  */
 public class ItemResponse {
     private UUID id;
-    private String type;   // BOOK / MUSIC (keep String for now)
+    private ItemType type;   // BOOK / MUSIC (keep String for now)
     private String title;
     private int year;
 
@@ -24,11 +26,11 @@ public class ItemResponse {
         this.id = id;
     }
 
-    public String getType() {
+    public ItemType getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(ItemType type) {
         this.type = type;
     }
 

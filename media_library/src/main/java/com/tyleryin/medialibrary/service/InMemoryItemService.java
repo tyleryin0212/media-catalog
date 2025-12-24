@@ -3,6 +3,7 @@ package com.tyleryin.medialibrary.service;
 
 import com.tyleryin.medialibrary.DTO.CreateItemRequest;
 import com.tyleryin.medialibrary.DTO.ItemResponse;
+import com.tyleryin.medialibrary.DTO.ItemType;
 import com.tyleryin.medialibrary.in_memory_domain.*;
 import org.springframework.stereotype.Service;
 
@@ -39,12 +40,13 @@ public class InMemoryItemService implements ItemService {
         Name name = new Name(req.getFirstName(), req.getLastName());
 
         Item item;
-        String type = req.getType();
+        ItemType type = req.getType();
+        if (type == null) throw new IllegalArgumentException("type cannot be null");
 
-        if (type.equalsIgnoreCase("BOOK")) {
+        if (type == ItemType.BOOK) {
             Author author = new Author(name);
             item = new Book(author, req.getTitle(), req.getYear());
-        } else if (type.equalsIgnoreCase("MUSIC")) {
+        } else if (type == ItemType.MUSIC) {
             RecordingArtist artist = new RecordingArtist(name);
             item = new Music(artist, req.getTitle(), req.getYear());
         } else {
@@ -56,7 +58,7 @@ public class InMemoryItemService implements ItemService {
         // Map domain -> response DTO
         ItemResponse res = new ItemResponse();
         res.setId(item.getId());
-        res.setType(item instanceof Book ? "BOOK" : "MUSIC");
+        res.setType(type);
         res.setTitle(item.getTitle());
         res.setYear(item.getYear());
 

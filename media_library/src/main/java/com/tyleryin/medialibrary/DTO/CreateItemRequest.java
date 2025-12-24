@@ -1,22 +1,36 @@
 package com.tyleryin.medialibrary.DTO;
 
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 /**
  * Direction client -> server, used by POST /items
  * represents what a client is allowed to send
  *
  */
 public class CreateItemRequest {
-    private String type;
+
+    @NotNull
+    private ItemType type;
+
+    @NotBlank
     private String title;
+
+    @Min(0)
     private int year;
+
+    @NotBlank
     private String firstName;
+
+    @NotBlank
     private String lastName;
 
-    public String getType() {
+    public ItemType getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(ItemType type) {
         this.type = type;
     }
 
