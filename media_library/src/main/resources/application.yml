@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/itemsdb
+    username: app
+    password: app
+
+  jpa:
+    hibernate:
+      ddl-auto: update
