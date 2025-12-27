@@ -51,6 +51,10 @@ public class Author implements Creator {
         return name.getFullName();
     }
 
+    public Name getNameDetails() {
+        return name;
+    }
+
     @Override
     public UUID getId() {
         return id;

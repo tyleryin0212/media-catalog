@@ -1,4 +1,6 @@
 spring:
+  profiles:
+    active: jpa
   datasource:
     url: jdbc:postgresql://localhost:5432/itemsdb
     username: app

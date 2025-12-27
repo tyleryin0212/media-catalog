@@ -31,4 +31,8 @@ public interface Creator {
     String getName();
     UUID getId();
 
+    default Name getNameDetails() {
+        return new Name(getName(), "");
+    }
+
 }
