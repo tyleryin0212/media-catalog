@@ -1,6 +1,7 @@
 package com.tyleryin.medialibrary.in_memory_domain;
 
 import java.util.Objects;
+import java.util.UUID;
 
 /**
  * The {@code RecordingArtist} class represents an individual who performs or produces music.
@@ -17,16 +18,26 @@ public class RecordingArtist implements Creator {
     /** The name of the recording artist, including first and last names. */
     private final Name name;
 
+    private final UUID id;
+
+    public RecordingArtist(Name name, UUID id) {
+        if  (name == null) {
+            throw new IllegalArgumentException("Name cannot be null");
+        }
+        if (id == null) {
+            throw new IllegalArgumentException("Id cannot be null");
+        }
+        this.name = name;
+        this.id = id;
+    }
+
     /**
      * Constructs a new {@code RecordingArtist} with the specified name.
      *
      * @param name the {@link Name} of the recording artist
      */
     public RecordingArtist(Name name) {
-        if  (name == null) {
-            throw new IllegalArgumentException("Name must not be null");
-        }
-        this.name = name;
+        this(name, UUID.randomUUID());
     }
 
     /**
@@ -40,14 +51,19 @@ public class RecordingArtist implements Creator {
     }
 
     @Override
+    public UUID getId() {
+        return id;
+    }
+
+    @Override
     public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        RecordingArtist that = (RecordingArtist) o;
-        return Objects.equals(getName(), that.getName());
+        if (this == o) return true;
+        if (!(o instanceof RecordingArtist that)) return false;
+        return id.equals(that.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(getName());
+        return id.hashCode();
     }
 }

@@ -7,7 +7,7 @@ import java.util.UUID;
 @Entity
 @Table(name = "creators")
 @Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn(name = "creator_type")
+@DiscriminatorColumn(name = "creator_type", discriminatorType = DiscriminatorType.STRING)
 
 public abstract class CreatorEntity {
 

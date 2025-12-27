@@ -1,5 +1,7 @@
 package com.tyleryin.medialibrary.in_memory_domain;
 
+import java.util.UUID;
+
 /**
  * The interface represents any entity that can create an {@link Item} in the library's catalog. A creator has a name
  * and maybe one of several types:
@@ -27,5 +29,6 @@ public interface Creator {
      * @return the name of the creator as a {@code String}
      */
     String getName();
+    UUID getId();
 
 }

@@ -2,6 +2,7 @@ package com.tyleryin.medialibrary.in_memory_domain;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
 
 
 /**
@@ -17,17 +18,26 @@ import java.util.Objects;
 public class Band implements Creator {
 
     private final String name;
+    private final UUID id;
     private final List<RecordingArtist> members;
 
-    public Band(String name, List<RecordingArtist> members) {
+    public Band(String name, UUID id, List<RecordingArtist> members) {
         if (name == null) {
             throw new IllegalArgumentException("band name cannot be null");
+        }
+        if (id == null) {
+            throw new IllegalArgumentException("band id cannot be null");
         }
         if (members == null) {
             throw new IllegalArgumentException("band members cannot be null");
         }
         this.name = name;
+        this.id = id;
         this.members = members;
+    }
+
+    public Band(String name, List<RecordingArtist> members) {
+        this(name, UUID.randomUUID(), members);
     }
 
 
@@ -39,6 +49,11 @@ public class Band implements Creator {
         return name;
     }
 
+    @Override
+    public UUID getId() {
+        return id;
+    }
+
     public boolean contains(RecordingArtist artist) {
         return members.contains(artist);
     }
@@ -46,12 +61,12 @@ public class Band implements Creator {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Band other)) return false;
-        return name.equals(other.name);
+        if (!(o instanceof Band that)) return false;
+        return id.equals(that.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name);
+        return id.hashCode();
     }
 }
