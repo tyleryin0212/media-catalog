@@ -25,7 +25,7 @@ public class ByCreatorNameContainsPredicate implements ItemPredicate {
     }
 
     private boolean creatorNameMatches(Creator creator) {
-        String name = creator.getNameString();
+        String name = creator.getDisplayName();
         if (name == null) return false; // defensive (shouldn't happen if your Name class is solid)
         return name.toLowerCase(Locale.ROOT).contains(needle);
     }

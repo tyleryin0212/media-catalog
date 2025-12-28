@@ -79,12 +79,12 @@ public class InMemoryItemService implements ItemService {
 
         if (item instanceof Book book) {
             response.setType(ItemType.BOOK);
-            response.setFirstName(book.getAuthor().getName());
-            response.setLastName("");
+            response.setDisplayName(book.getAuthor().getDisplayName());
+
         } else if (item instanceof Music music) {
             response.setType(ItemType.MUSIC);
-            response.setFirstName(music.getCreator().getName());
-            response.setLastName("");
+            response.setDisplayName(music.getCreator().getDisplayName());
+
         }
 
         return response;

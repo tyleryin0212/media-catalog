@@ -15,8 +15,7 @@ public class ItemResponse {
     private String title;
     private int year;
 
-    private String firstName;
-    private String lastName;
+    private String displayName;;
 
     public UUID getId() {
         return id;
@@ -50,19 +49,10 @@ public class ItemResponse {
         this.year = year;
     }
 
-    public String getFirstName() {
-        return firstName;
+   public  String getDisplayName() {
+        return displayName;
     }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
     }
 }

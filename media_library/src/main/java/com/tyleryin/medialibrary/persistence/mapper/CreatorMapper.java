@@ -16,15 +16,15 @@ public class CreatorMapper {
         if (c instanceof Author a) {
             String first = a.getName().getFirstName();
             String last  = a.getName().getLastName();
-            return new AuthorEntity(a.getId(), a.getNameString(), first, last);
+            return new AuthorEntity(a.getId(), a.getDisplayName(), first, last);
         }
         if (c instanceof RecordingArtist ra) {
             String first = ra.getName().getFirstName();
             String last  = ra.getName().getLastName();
-            return new RecordingArtistEntity(ra.getId(), ra.getNameString(), first, last);
+            return new RecordingArtistEntity(ra.getId(), ra.getDisplayName(), first, last);
         }
         if (c instanceof Band b) {
-            return new BandEntity(b.getId(), b.getNameString());
+            return new BandEntity(b.getId(), b.getDisplayName());
         }
         throw new IllegalArgumentException("Unknown creator type: " + c.getClass());
     }

@@ -114,12 +114,10 @@ public class JpaItemService implements ItemService {
 
         if (item instanceof Book book) {
             response.setType(ItemType.BOOK);
-            response.setFirstName(book.getAuthor().getNameString());
-            response.setLastName("");
+            response.setDisplayName(book.getAuthor().getDisplayName());
         } else if (item instanceof Music music) {
             response.setType(ItemType.MUSIC);
-            response.setFirstName(music.getCreator().getNameString());
-            response.setLastName("");
+            response.setDisplayName(music.getCreator().getDisplayName());
         }
 
         return response;

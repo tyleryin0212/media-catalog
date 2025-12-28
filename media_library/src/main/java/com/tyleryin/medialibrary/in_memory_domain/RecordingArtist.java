@@ -51,7 +51,7 @@ public class RecordingArtist implements Creator {
     }
 
     @Override
-    public String getNameString() {
+    public String getDisplayName() {
         return name.getFullName();
     }
 
